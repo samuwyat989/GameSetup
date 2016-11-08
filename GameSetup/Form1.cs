@@ -15,6 +15,7 @@ namespace GameSetup
         public Form1()
         {
             InitializeComponent();
+            name.MaxLength = 10;
         }
 
         private void draw_Click(object sender, EventArgs e)
@@ -26,7 +27,10 @@ namespace GameSetup
             Pen Bpen = new Pen(Color.Black);
             SolidBrush Bbrush = new SolidBrush(Color.Black);
             Font BFont = new Font("Consolas", 25);
-            Font LFont = new Font("Consolas", 11);
+            Font Font1 = new Font("Consolas", 11);
+            Font Font2 = new Font("Consolas", 9);
+            Font Font3 = new Font("Consolas", 8);
+            Font Font4 = new Font("Consolas", 7);
 
             Point[] grave = { new Point(100, 150), new Point(105, 150), new Point(105, 145), new Point(205, 145), new Point(205, 150),
                 new Point(210, 150), new Point(210, 350), new Point(100, 350)};
@@ -42,18 +46,24 @@ namespace GameSetup
                 draw.DrawPolygon(Bpen, grave);
                 draw.DrawLine(Bpen, 50, 350, 260, 350);
                 draw.DrawString("R.I.P", BFont, Bbrush, 103, 150);
-                draw.DrawString(name1 + " died of:", LFont, Bbrush, 103, 180);
-            }
 
-            if (name.SelectionLength == 5)
-            {
-                draw.DrawString("Yes", BFont, Bbrush, 103, 150);
+                if (name1.Length <= 3)
+                {
+                    draw.DrawString(name1 + " died of:", Font1, Bbrush, 103, 183);
+                }
+                else if (name1.Length <= 6 && name1.Length > 3)
+                {
+                    draw.DrawString(name1 + " died of:", Font2, Bbrush, 107, 183);
+                }
+                else if (name1.Length == 7 || name1.Length == 8)
+                {
+                    draw.DrawString(name1 + " died of:", Font3, Bbrush, 104, 183);
+                }
+                else
+                {
+                    draw.DrawString(name1 + " died of:", Font4, Bbrush, 105, 183);
+                }
             }
-            else
-            {
-                draw.DrawString("No", BFont, Bbrush, 103, 150);
-            }
-            
 
         }
 
